@@ -7,12 +7,7 @@ import java.util.List;
 public class Day1 {
     List<String> lines;
 
-    public Day1(String fileName) {
-        lines = Util.readFile(getClass(), fileName);
-    }
-
-    public long puzzle1() {
-        String input = lines.get(0);
+    public long puzzle1(String input) {
         List<String> pairs = Collection.sliding(input, 2);
 
         long result = 0;
@@ -27,8 +22,7 @@ public class Day1 {
         return result + loopPair;
     }
 
-    public long puzzle2() {
-        String input = lines.get(0);
+    public long puzzle2(String input) {
         List<String> pairs = Collection.sliding(input, 2);
 
         long result = 0;
