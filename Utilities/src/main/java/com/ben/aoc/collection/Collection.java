@@ -2,6 +2,7 @@ package com.ben.aoc.collection;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Collection {
@@ -71,6 +72,44 @@ public class Collection {
 
     public static <T> List<List<T>> sliding(T[] array, Integer size) {
         return sliding(array, size, 1);
+    }
+
+    public static <T> List<List<T>> combinationsUtil(List<T> l, Integer n){
+        List<List<T>> result = new ArrayList<>();
+        if(n == 1){
+            for(T element : l) {
+                List<T> sub = new ArrayList<>();
+                sub.add(element);
+                result.add(sub);
+            }
+            return result;
+        }
+        if(n == 2){
+            for(int i = 0; i < l.size() - 1; i++){
+                for(int j = i+1; j<l.size(); j++){
+                    List<T> sub = new ArrayList<>();
+                    sub.add(l.get(i));
+                    sub.add(l.get(j));
+                    result.add(sub);
+                }
+            }
+            return result;
+        }
+        if(n == 3){
+            for(int i = 0; i < l.size() - 2; i++){
+                for(int j = i+1; j<l.size() - 1; j++){
+                    for(int k = j+1; k<l.size(); k++) {
+                        List<T> sub = new ArrayList<>();
+                        sub.add(l.get(i));
+                        sub.add(l.get(j));
+                        sub.add(l.get(k));
+                        result.add(sub);
+                    }
+                }
+            }
+            return result;
+        }
+        return result;
     }
 
 }

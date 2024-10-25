@@ -57,4 +57,43 @@ public class CollectionTest {
         assertEquals((Integer) 3, list.getOpposite(0, false));
     }
 
+    @Test
+    public void combinationsTest(){
+        List<Integer> list = Arrays.asList(0, 1, 2, 3, 4);
+        List<List<Integer>> expectedCom1 = Arrays.asList(
+                List.of(0),
+                List.of(1),
+                List.of(2),
+                List.of(3),
+                List.of(4)
+        );
+        assertEquals(expectedCom1, Collection.combinationsUtil(list, 1));
+        List<List<Integer>> expectedCom2 = Arrays.asList(
+                Arrays.asList(0, 1),
+                Arrays.asList(0, 2),
+                Arrays.asList(0, 3),
+                Arrays.asList(0, 4),
+                Arrays.asList(1, 2),
+                Arrays.asList(1, 3),
+                Arrays.asList(1, 4),
+                Arrays.asList(2, 3),
+                Arrays.asList(2, 4),
+                Arrays.asList(3, 4)
+        );
+        assertEquals(expectedCom2, Collection.combinationsUtil(list, 2));
+        List<List<Integer>> expectedCom3 = Arrays.asList(
+                Arrays.asList(0,1,2),
+                Arrays.asList(0,1,3),
+                Arrays.asList(0,1,4),
+                Arrays.asList(0,2,3),
+                Arrays.asList(0,2,4),
+                Arrays.asList(0,3,4),
+                Arrays.asList(1,2,3),
+                Arrays.asList(1,2,4),
+                Arrays.asList(1,3,4),
+                Arrays.asList(2,3,4)
+        );
+        assertEquals(expectedCom3, Collection.combinationsUtil(list, 3));
+    }
+
 }
