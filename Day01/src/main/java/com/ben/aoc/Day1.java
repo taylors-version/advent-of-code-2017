@@ -6,7 +6,6 @@ import com.ben.aoc.collection.Collection;
 import java.util.List;
 
 public class Day1 {
-    List<String> lines;
 
     public long puzzle1(String input) {
         List<String> pairs = Collection.sliding(input, 2);
