@@ -10,11 +10,18 @@
     </parent>
 
     <artifactId>Day01</artifactId>
+    <name>Day 1</name>
 
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.ben.aoc2017</groupId>
+            <artifactId>Utilities</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
