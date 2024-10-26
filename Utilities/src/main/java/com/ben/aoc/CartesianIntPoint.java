@@ -42,6 +42,19 @@ public class CartesianIntPoint extends Point<Integer> {
 		
 		return neighbours;
 	}
+
+    public List<Point<Integer>> allNeighbours(Boolean includeDiagonals){
+        List<Point<Integer>> neighbours = allNeighbours();
+
+        if(includeDiagonals) {
+            neighbours.add(new CartesianIntPoint(getX() + 1, getY() + 1));
+            neighbours.add(new CartesianIntPoint(getX() + 1, getY() - 1));
+            neighbours.add(new CartesianIntPoint(getX() - 1, getY() + 1));
+            neighbours.add(new CartesianIntPoint(getX() - 1, getY() - 1));
+        }
+
+        return neighbours;
+    }
 	
 	public int manhattanDistance(CartesianIntPoint point) {
 		return Math.abs(this.getX() - point.getX()) + Math.abs(this.getY() - point.getY());
