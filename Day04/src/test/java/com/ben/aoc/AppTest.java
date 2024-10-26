@@ -32,4 +32,18 @@ public class AppTest {
         assertEquals(1, day4.puzzle1(input));
     }
 
+    @Test
+    public void TestAnagramSample1Input(){
+        List<String> input = new ArrayList<>();
+        input.add("abcde fghij");
+        assertEquals(1, day4.puzzle2(input));
+    }
+
+    @Test
+    public void TestAnagramSample2Input(){
+        List<String> input = new ArrayList<>();
+        input.add("abcde xyz ecdab");
+        assertEquals(0, day4.puzzle2(input));
+    }
+
 }
