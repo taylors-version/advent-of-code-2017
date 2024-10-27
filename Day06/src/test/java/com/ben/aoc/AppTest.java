@@ -16,4 +16,10 @@ public class AppTest {
         assertEquals(5, day6.puzzle1(input));
     }
 
+    @Test
+    public void TestSampleInput2(){
+        String input = "0 2 7 0";
+        assertEquals(4, day6.puzzle2(input));
+    }
+
 }

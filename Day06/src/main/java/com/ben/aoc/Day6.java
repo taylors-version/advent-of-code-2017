@@ -19,8 +19,15 @@ public class Day6 {
 
     public long puzzle2(String input) {
         int result = 0;
+        List<Integer> memory = Arrays.stream(input.split("\\s")).map(Integer::parseInt).toList();
 
-        return result;
+        Map<List<Integer>, Integer> seen = new HashMap<>();
+        while(seen.putIfAbsent(memory, result) == null){
+            result ++;
+            memory = distribute(memory);
+        }
+
+        return result - seen.get(memory);
     }
 
     private List<Integer> distribute(List<Integer> memory){
