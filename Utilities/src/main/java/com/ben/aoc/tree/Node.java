@@ -9,8 +9,8 @@ public class Node<T> {
     protected List<Node<T>> children;
 
     public Node(T data){
-        this.data = data;
         this.children = new LinkedList<>();
+        this.data = data;
     }
 
     public Node<T> addChild(T child){
@@ -20,6 +20,7 @@ public class Node<T> {
         return childNode;
     }
 
+
     public Node<T> getParent(){
         return parent;
     }
@@ -27,5 +28,22 @@ public class Node<T> {
     public T getData(){
         return data;
     }
+
+    @Override
+    public boolean equals(Object o){
+        if (o == null){
+            return false;
+        }
+        if(this == o){
+            return true;
+        }
+        if(!(o instanceof Node n)){
+            return false;
+        }
+        return n.data.equals(data);
+    }
+
+    @Override
+    public int hashCode(){ return data.hashCode();}
 
 }
