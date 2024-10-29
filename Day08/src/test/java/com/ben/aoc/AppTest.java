@@ -20,5 +20,10 @@ public class AppTest {
         assertEquals(1, day8.puzzle1(input));
     }
 
+    @Test
+    public void TestSampleInput2(){
+        List<String> input = List.of(sampleInput.split("\\n"));
+        assertEquals(10, day8.puzzle2(input));
+    }
 
 }

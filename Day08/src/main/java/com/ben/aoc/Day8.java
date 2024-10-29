@@ -22,13 +22,13 @@ public class Day8 {
     }
 
     public long puzzle2(List<String> input) {
-        int result = 0;
-
-        return result;
+        registers = new HashMap<>();
+        return parseInstructions(input);
     }
 
-    private void parseInstructions(List<String> instructions) {
-        for(String instruction : instructions){
+    private int parseInstructions(List<String> instructions) {
+        int max = Integer.MIN_VALUE;
+        for (String instruction : instructions) {
             String[] split = instruction.split(" ");
             String register = split[0];
             Integer oldValue = registers.getOrDefault(register, 0);
@@ -37,22 +37,30 @@ public class Day8 {
             boolean add = false;
             Integer comparedReg = registers.getOrDefault(split[4], 0);
             Integer comparedVal = Integer.parseInt(split[6]);
-            switch(split[5]){
-                case ">": add = comparedReg > comparedVal;
+            switch (split[5]) {
+                case ">":
+                    add = comparedReg > comparedVal;
                     break;
-                case ">=": add = comparedReg >= comparedVal;
+                case ">=":
+                    add = comparedReg >= comparedVal;
                     break;
-                case "<": add = comparedReg < comparedVal;
+                case "<":
+                    add = comparedReg < comparedVal;
                     break;
-                case "<=": add = comparedReg <= comparedVal;
+                case "<=":
+                    add = comparedReg <= comparedVal;
                     break;
-                case "==": add = comparedReg.equals(comparedVal);
+                case "==":
+                    add = comparedReg.equals(comparedVal);
                     break;
-                case "!=": add = !Objects.equals(comparedReg, comparedVal);
+                case "!=":
+                    add = !Objects.equals(comparedReg, comparedVal);
             }
-
-            if(add) registers.put(register, oldValue + addition);
+            int newValue = add ? oldValue + addition : oldValue;
+            max = Math.max(max, newValue);
+            registers.put(register, newValue);
         }
+        return max;
     }
 
 }
