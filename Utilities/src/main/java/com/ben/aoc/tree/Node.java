@@ -29,6 +29,10 @@ public class Node<T> {
         return data;
     }
 
+    public List<Node<T>> getChildren(){
+        return children;
+    }
+
     @Override
     public boolean equals(Object o){
         if (o == null){

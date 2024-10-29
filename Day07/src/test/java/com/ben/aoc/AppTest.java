@@ -29,4 +29,10 @@ public class AppTest {
         assertEquals("tknk", day7.puzzle1(input));
     }
 
+    @Test
+    public void TestSampleInput2(){
+        List<String> input = List.of(sampleInput.split("\\n"));
+        assertEquals(60, day7.puzzle2(input));
+    }
+
 }
