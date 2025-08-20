@@ -21,5 +21,21 @@ public class AppTest {
         assertEquals(3, day9.puzzle1("{{<a!>},{<a!>},{<a!>},{<ab>}}"));
     }
 
+    @Test
+    public void TestSampleInputsPart2(){
+        assertEquals(0, day9.puzzle2("<>"));
+        assertEquals(17, day9.puzzle2("<random characters>"));
+        assertEquals(3, day9.puzzle2("<<<<>"));
+        assertEquals(2, day9.puzzle2("<{!>}>"));
+        assertEquals(0, day9.puzzle2("<!!>"));
+        assertEquals(0, day9.puzzle2("<!!!>>"));
+        assertEquals(10, day9.puzzle2("<{obi!a,<{i<a>"));
+    }
+
+    @Test
+    public void TestAdditionalPart2(){
+        assertEquals(1, day9.puzzle2("{<a!b>}"));
+    }
+
 
 }

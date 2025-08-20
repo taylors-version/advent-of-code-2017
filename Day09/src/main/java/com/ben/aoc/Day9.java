@@ -40,7 +40,32 @@ public class Day9 {
     }
 
     public long puzzle2(String input) {
-        return 0;
+        long trashChars = 0;
+        boolean inTrash = false;
+        boolean skip = false;
+        for(char c : input.toCharArray()){
+            if(!skip) {
+                if (!inTrash) {
+                    if (c =='<') {
+                        inTrash = true;
+                    }
+                } else {
+                    switch (c) {
+                        case '>':
+                            inTrash = false;
+                            break;
+                        case '!':
+                            skip = true;
+                            break;
+                        default:
+                            trashChars++;
+                    }
+                }
+            }else{
+                skip = false;
+            }
+        }
+        return trashChars;
     }
 
 }
