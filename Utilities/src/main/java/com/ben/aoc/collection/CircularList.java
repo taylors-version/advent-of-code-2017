@@ -64,7 +64,7 @@ public class CircularList<E> extends ArrayList<E> {
 
     @Override
     public E set(int index, E element){
-        return super.set(index & this.size(), element);
+        return super.set(index % this.size(), element);
     }
 
     @Override
