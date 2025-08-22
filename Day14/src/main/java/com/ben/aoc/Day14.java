@@ -1,28 +1,43 @@
 package com.ben.aoc;
 
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Day14 {
     Day10 hasher = new Day10();
 
     public long puzzle1(String input) {
         long used = 0;
-        List<String> hashes = new ArrayList<>();
         for(int i = 0; i < 128; i++){
-            hashes.add(binaryHash(hasher.puzzle2(input + "-" + i)));
-        }
-
-        for(String hash : hashes){
-            used += hash.chars().filter(c -> c == '1').count();
+            used += binaryHash(hasher.puzzle2(input + "-" + i)).chars().filter(c -> c == '1').count();
         }
 
         return used;
     }
 
     public long puzzle2(String input) {
-        return 0;
+        long groups = 0;
+        Set<IntPoint> used = findUsed(input);
+        Queue<IntPoint> queue = new ArrayDeque<>(used);
+        while(!queue.isEmpty()){
+            IntPoint point = queue.remove();
+            groups++;
+            Queue<IntPoint> group = new ArrayDeque<>();
+            group.add(point);
+            Set<IntPoint> visited = new HashSet<>();
+            IntPoint current;
+            while (!group.isEmpty()){
+                current = group.remove();
+                visited.add(current);
+                List<IntPoint> neighbours = current.allNeighbours().stream().map(p -> (IntPoint)p).filter(used::contains).toList();
+                group.addAll(neighbours);
+                group.removeAll(visited);
+            }
+            queue.removeAll(visited);
+        }
+
+
+        return groups;
     }
 
     private String binaryHash(String hex){
@@ -43,6 +58,20 @@ public class Day14 {
         hex = hex.replaceAll("e", "1110");
         hex = hex.replaceAll("f", "1111");
         return hex;
+    }
+
+    private Set<IntPoint> findUsed(String input){
+        Set<IntPoint> used = new HashSet<>();
+        for(int i = 0; i < 128; i++){
+            String hash = binaryHash(hasher.puzzle2(input + "-" + i));
+            for(int j = 0; j < hash.length(); j++){
+                if(hash.charAt(j) == '1'){
+                    used.add(new IntPoint(j, i));
+                }
+            }
+        }
+
+        return used;
     }
 
 }
