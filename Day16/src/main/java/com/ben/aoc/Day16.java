@@ -1,24 +1,43 @@
 package com.ben.aoc;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Day16 {
 
     public String puzzle1(String input) {
-        String result = "abcdefghijklmnop";
-        for(String step : input.split(",")){
-            result = switch (step.charAt(0)) {
-                case 's' -> spin(result, step);
-                case 'x' -> exchange(result, step);
-                case 'p' -> partner(result, step);
-                default -> result;
-            };
-        }
 
-        return result;
+        return dance("abcdefghijklmnop", input);
     }
 
     public String puzzle2(String input) {
-        return "";
+        Map<String, Integer> patternToIndex = new HashMap<>();
+        Map<Integer, String> indexToPattern = new HashMap<>();
+        String result = "abcdefghijklmnop";
+        int index = 0;
+        while (!patternToIndex.containsKey(result)) {
+            patternToIndex.put(result, index);
+            indexToPattern.put(index, result);
+            result = dance(result, input);
+            index++;
+        }
+
+
+        return indexToPattern.get(1000000000 % index);
+    }
+
+    private String dance(String input, String dance){
+        for(String step : dance.split(",")){
+            input = switch (step.charAt(0)) {
+                case 's' -> spin(input, step);
+                case 'x' -> exchange(input, step);
+                case 'p' -> partner(input, step);
+                default -> input;
+            };
+        }
+
+        return input;
     }
 
     private String spin(String input, String command){
