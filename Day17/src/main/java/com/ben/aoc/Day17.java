@@ -23,7 +23,22 @@ public class Day17 {
     }
 
     public long puzzle2(String input) {
-        return 0;
+        int adder = Integer.parseInt(input);
+        int index = 0;
+        int size = 1;
+        int result = 0;
+
+        for(int i = 1; i <= 50000000; i++){
+            index = (index + adder) % size;
+            index++;
+            if (index ==1){
+                result = i;
+            }
+            size++;
+
+        }
+
+        return result;
     }
 
 
