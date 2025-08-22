@@ -26,6 +26,7 @@
         <module>Day12</module>
         <module>Day13</module>
         <module>Day14</module>
+        <module>Day15</module>
     </modules>
 
     <properties>
@@ -56,6 +57,11 @@
                 <groupId>org.jgrapht</groupId>
                 <artifactId>jgrapht-core</artifactId>
                 <version>1.5.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.18.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
