@@ -38,8 +38,37 @@ public class Day19 {
 
     }
 
-    public String puzzle2(List<String> input) {
-        return "";
+    public long puzzle2(List<String> input) {
+        long steps = 0;
+
+        map = new char[input.size()][];
+        for(int i = 0; i < input.size(); i++){
+            map[i] = input.get(i).toCharArray();
+        }
+
+        IntPoint point = new IntPoint(input.get(0).indexOf('|'), 0);
+        char value = '|';
+        Direction dir = new Direction('d');
+
+        while (true){
+            while (value != '+'){
+                if(value == ' '){
+                    return steps;
+                }
+                point = (IntPoint) point.getByDirection(dir);
+                value = getValueAtPoint(point);
+                steps++;
+            }
+            if(getValueAtPoint((IntPoint) point.getByDirection(dir.rotateClockwise())) != ' '){
+                dir = dir.rotateClockwise();
+            }else {
+                dir = dir.rotateAntiClockwise();
+            }
+            point = (IntPoint) point.getByDirection(dir);
+            value = getValueAtPoint(point);
+            steps++;
+        }
+
     }
 
     private char getValueAtPoint(IntPoint point){
