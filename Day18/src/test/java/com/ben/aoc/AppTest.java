@@ -19,9 +19,22 @@ public class AppTest {
             "jgz a -1",
             "set a 1",
             "jgz a -2");
+
+    List<String> testInput2 = List.of("snd 1",
+            "snd 2",
+            "snd p",
+            "rcv a",
+            "rcv b",
+            "rcv c",
+            "rcv d");
     @Test
     public void TestPuzzle1(){
         assertEquals(4, day18.puzzle1(testInput));
+    }
+
+    @Test
+    public void TestPuzzle2(){
+        assertEquals(3, day18.puzzle2(testInput2));
     }
 
 
