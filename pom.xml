@@ -32,6 +32,7 @@
         <module>Day18</module>
         <module>Day19</module>
         <module>Day20</module>
+        <module>Day21</module>
     </modules>
 
     <properties>
