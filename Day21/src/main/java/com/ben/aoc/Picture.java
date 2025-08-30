@@ -49,7 +49,7 @@ public class Picture {
             return false;
         }
         char[][] gridB = picture.grid;
-        return compareRotations(grid, gridB) || compareRotations(grid, Util.flipMatrixEW(gridB)) || compareRotations(gridB, Util.flipMatrixNS(gridB));
+        return compareRotations(grid, gridB) || compareRotations(grid, Util.flipMatrixEW(gridB)) || compareRotations(grid, Util.flipMatrixNS(gridB));
     }
 
     public int numberOfOn(){
