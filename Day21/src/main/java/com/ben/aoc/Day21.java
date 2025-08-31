@@ -12,7 +12,6 @@ public class Day21 {
             String[] split = line.split(" => ");
             enhancements.add(new Picture(split[0], new Picture(split[1])));
         }
-        System.out.println(artwork);
         for(int i = 0; i < iterations; i++){
             List<Picture> split = artwork.split();
             List<Picture> translated = new ArrayList<>();
@@ -25,7 +24,6 @@ public class Day21 {
                 }
             }
             artwork = new Picture(translated);
-            System.out.println(artwork);
         }
 
         return artwork.numberOfOn();

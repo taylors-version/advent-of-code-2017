@@ -8,7 +8,7 @@ public class App {
     {
         Day21 day21 = new Day21();
         List<String> lines = Util.readFile(App.class, "input.txt");
-        System.out.println("puzzle 1: " + day21.puzzle1(lines, 5));//1085522 too high 108 too low
+        System.out.println("puzzle 1: " + day21.puzzle1(lines, 5));
         System.out.println("puzzle 2: " + day21.puzzle2(lines));
     }
 }
