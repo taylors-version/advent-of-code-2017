@@ -34,7 +34,29 @@ public class Day23 {
     }
 
     public long puzzle2(List<String> input) {
-        return 0;
+
+        return countComposites(107900,107900+17000, 17); // values came from initial b, initial c, the addition to b near the end
+    }
+
+    private long countComposites(int start, int end, int step){
+        long count = 0;
+        for(int i = start; i <= end; i+=step){
+            if(isComposite(i)){
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    private boolean isComposite(int n){
+        int sqrt = (int) Math.sqrt(n);
+        for (int i = 2; i <= sqrt; i++){
+            if(n%i == 0){
+                return true;
+            }
+        }
+        return false;
     }
 
     private long getValue(Map<Character, Long> registers, String val){
@@ -55,6 +77,25 @@ public class Day23 {
         char location = mulOp[1].charAt(0);
         long value = getValue(registers, mulOp[2]);
         registers.computeIfPresent(location, (a, b) -> b * value);
+    }
+
+    private void printRegisters(Map<Character, Long> registers){
+        System.out.print("a: " + registers.getOrDefault('a', 0L));
+        System.out.print(", ");
+        System.out.print("b: " + registers.getOrDefault('b', 0L));
+        System.out.print(", ");
+        System.out.print("c: " + registers.getOrDefault('c', 0L));
+        System.out.print(", ");
+        System.out.print("d: " + registers.getOrDefault('d', 0L));
+        System.out.print(", ");
+        System.out.print("e: " + registers.getOrDefault('e', 0L));
+        System.out.print(", ");
+        System.out.print("f: " + registers.getOrDefault('f', 0L));
+        System.out.print(", ");
+        System.out.print("g: " + registers.getOrDefault('g', 0L));
+        System.out.print(", ");
+        System.out.print("h: " + registers.getOrDefault('h', 0L));
+        System.out.print("\n");
     }
 
 }
